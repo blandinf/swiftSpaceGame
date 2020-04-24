@@ -14,7 +14,6 @@
 		AD714219244999D500F98183 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD714217244999D500F98183 /* Main.storyboard */; };
 		AD71421B244999D800F98183 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD71421A244999D800F98183 /* Assets.xcassets */; };
 		AD71421E244999D800F98183 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD71421C244999D800F98183 /* LaunchScreen.storyboard */; };
-		ADB7199E24499CBC00DABA4D /* Starfield.sks in Resources */ = {isa = PBXBuildFile; fileRef = ADB7199D24499CBC00DABA4D /* Starfield.sks */; };
 		ADB719A12449A13700DABA4D /* enemy-types.json in Resources */ = {isa = PBXBuildFile; fileRef = ADB7199F2449A13600DABA4D /* enemy-types.json */; };
 		ADB719A22449A13700DABA4D /* waves.json in Resources */ = {isa = PBXBuildFile; fileRef = ADB719A02449A13600DABA4D /* waves.json */; };
 		ADB719A42449A19500DABA4D /* EnemyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB719A32449A19500DABA4D /* EnemyType.swift */; };
@@ -33,7 +32,6 @@
 		AD71421A244999D800F98183 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD71421D244999D800F98183 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD71421F244999D800F98183 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ADB7199D24499CBC00DABA4D /* Starfield.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Starfield.sks; sourceTree = "<group>"; };
 		ADB7199F2449A13600DABA4D /* enemy-types.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "enemy-types.json"; sourceTree = "<group>"; };
 		ADB719A02449A13600DABA4D /* waves.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = waves.json; sourceTree = "<group>"; };
 		ADB719A32449A19500DABA4D /* EnemyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyType.swift; sourceTree = "<group>"; };
@@ -79,7 +77,6 @@
 				AD714215244999D500F98183 /* GameViewController.swift */,
 				AD714217244999D500F98183 /* Main.storyboard */,
 				AD71421A244999D800F98183 /* Assets.xcassets */,
-				ADB7199D24499CBC00DABA4D /* Starfield.sks */,
 				AD71421C244999D800F98183 /* LaunchScreen.storyboard */,
 				AD71421F244999D800F98183 /* Info.plist */,
 				ADB7199F2449A13600DABA4D /* enemy-types.json */,
@@ -153,7 +150,6 @@
 				AD714219244999D500F98183 /* Main.storyboard in Resources */,
 				ADB719A22449A13700DABA4D /* waves.json in Resources */,
 				AD714210244999D500F98183 /* GameScene.sks in Resources */,
-				ADB7199E24499CBC00DABA4D /* Starfield.sks in Resources */,
 				AD71421B244999D800F98183 /* Assets.xcassets in Resources */,
 				AD71421E244999D800F98183 /* LaunchScreen.storyboard in Resources */,
 			);
