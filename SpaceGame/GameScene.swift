@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import AVKit
 
 enum CollisionType: UInt32 {
     case player = 1
@@ -17,10 +18,12 @@ enum CollisionType: UInt32 {
 
 class GameScene: SKScene {
     let PLAYER_HEIGHT: CGFloat = 30.0
-    let PLAYER_WIDTH: CGFloat = 65.0
+    let PLAYER_WIDTH: CGFloat = 75.0
     let player = SKSpriteNode(imageNamed: "player")
     let waves = Bundle.main.decode([Wave].self, from: "waves.json")
     let enemyTypes = Bundle.main.decode([EnemyType].self, from: "enemy-types.json")
+    var avPlayer = AVPlayer()
+
     
     var isPlayerAlive = true
     var levelNumber = 0
@@ -42,6 +45,31 @@ class GameScene: SKScene {
         player.physicsBody?.collisionBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
         player.physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
         player.physicsBody?.isDynamic = false
+        
+        launchVideoInLoop()
+    }
+    
+    func launchVideoInLoop() {
+        let videoNode: SKVideoNode? = {
+            guard let urlString = Bundle.main.path(forResource: "video", ofType: "mp4") else { return nil }
+            let url = URL(fileURLWithPath: urlString)
+            let item = AVPlayerItem(url: url)
+            avPlayer = AVPlayer(playerItem: item)
+            
+            return SKVideoNode(avPlayer: avPlayer)
+        }()
+        
+        videoNode?.position = CGPoint( x: frame.midX, y: frame.midY)
+        videoNode?.zPosition = 0
+        addChild((videoNode)!)
+        avPlayer.play()
+        
+        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: avPlayer.currentItem, queue: nil)
+        { notification in
+            self.avPlayer.seek(to: CMTime.zero)
+            self.avPlayer.play()
+            print("reset Video")
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {

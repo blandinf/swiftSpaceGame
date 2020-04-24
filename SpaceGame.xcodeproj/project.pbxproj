@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD4F40E52453363B002AE90D /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AD4F40E424533634002AE90D /* video.mp4 */; };
 		AD71420E244999D500F98183 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD71420D244999D500F98183 /* AppDelegate.swift */; };
 		AD714210244999D500F98183 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AD71420F244999D500F98183 /* GameScene.sks */; };
 		AD714214244999D500F98183 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD714213244999D500F98183 /* GameScene.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AD4F40E424533634002AE90D /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = video.mp4; path = ../../POCS/POCSGameVideo/SpaceGame/video.mp4; sourceTree = "<group>"; };
 		AD71420A244999D500F98183 /* SpaceGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD71420D244999D500F98183 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD71420F244999D500F98183 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 		AD71420C244999D500F98183 /* SpaceGame */ = {
 			isa = PBXGroup;
 			children = (
+				AD4F40E424533634002AE90D /* video.mp4 */,
 				AD71420D244999D500F98183 /* AppDelegate.swift */,
 				AD71420F244999D500F98183 /* GameScene.sks */,
 				AD714213244999D500F98183 /* GameScene.swift */,
@@ -146,6 +149,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD4F40E52453363B002AE90D /* video.mp4 in Resources */,
 				ADB719A12449A13700DABA4D /* enemy-types.json in Resources */,
 				AD714219244999D500F98183 /* Main.storyboard in Resources */,
 				ADB719A22449A13700DABA4D /* waves.json in Resources */,
