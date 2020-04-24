@@ -16,6 +16,8 @@ enum CollisionType: UInt32 {
 }
 
 class GameScene: SKScene {
+    let PLAYER_HEIGHT: CGFloat = 30.0
+    let PLAYER_WIDTH: CGFloat = 75.0
     let player = SKSpriteNode(imageNamed: "player")
     let waves = Bundle.main.decode([Wave].self, from: "waves.json")
     let enemyTypes = Bundle.main.decode([EnemyType].self, from: "enemy-types.json")
@@ -31,15 +33,29 @@ class GameScene: SKScene {
         
         //player first position
         player.name = "player"
-        player.position.x = frame.minX + 75
+        player.position.x = frame.minX + PLAYER_WIDTH
         player.zPosition = 1
         addChild(player)
-    
+        
         player.physicsBody = SKPhysicsBody(texture: player.texture!, size: player.texture!.size())
         player.physicsBody?.categoryBitMask = CollisionType.player.rawValue
         player.physicsBody?.collisionBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
         player.physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
         player.physicsBody?.isDynamic = false
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            player.position.x = location.x
+            player.position.y = location.y
+            
+            if player.position.y + PLAYER_HEIGHT > frame.maxY {
+                player.position.y = frame.maxY - PLAYER_HEIGHT
+            } else if player.position.y - PLAYER_HEIGHT < frame.minY {
+                player.position.y = frame.minY + PLAYER_HEIGHT
+            }
+        }
     }
     
     override func update(_ currentTime: TimeInterval) {
