@@ -16,7 +16,7 @@ enum CollisionType: UInt32 {
     case enemyWeapon = 8
 }
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     let PLAYER_HEIGHT: CGFloat = 30.0
     let PLAYER_WIDTH: CGFloat = 75.0
     let player = SKSpriteNode(imageNamed: "player")
@@ -28,11 +28,13 @@ class GameScene: SKScene {
     var isPlayerAlive = true
     var levelNumber = 0
     var waveNumber = 0
+    var playerShield = 3
     
     let positions = Array(stride(from: -320, through: 320, by: 80))
     
     override func didMove(to view: SKView) {
         physicsWorld.gravity = .zero
+        physicsWorld.contactDelegate = self
         
         //player first position
         player.name = "player"
@@ -40,13 +42,14 @@ class GameScene: SKScene {
         player.zPosition = 1
         addChild(player)
         
-        player.physicsBody = SKPhysicsBody(texture: player.texture!, size: player.texture!.size())
+//        player.physicsBody = SKPhysicsBody(texture: player.texture!, size: player.texture!.size())
+        player.physicsBody = SKPhysicsBody(rectangleOf: player.texture!.size())
         player.physicsBody?.categoryBitMask = CollisionType.player.rawValue
         player.physicsBody?.collisionBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
         player.physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
         player.physicsBody?.isDynamic = false
         
-        launchVideoInLoop()
+//        launchVideoInLoop()
     }
     
     func launchVideoInLoop() {

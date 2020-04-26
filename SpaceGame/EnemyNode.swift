@@ -20,7 +20,8 @@ class EnemyNode: SKSpriteNode {
         let texture = SKTexture(imageNamed: type.name)
         super.init(texture: texture, color: .white, size: texture.size())
         
-        physicsBody = SKPhysicsBody(texture: texture, size: texture.size())
+//        physicsBody = SKPhysicsBody(texture: texture, size: texture.size())
+        physicsBody = SKPhysicsBody(rectangleOf: texture.size())
         physicsBody?.categoryBitMask = CollisionType.enemy.rawValue
         physicsBody?.collisionBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
         physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
