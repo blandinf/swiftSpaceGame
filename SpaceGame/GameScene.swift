@@ -135,4 +135,32 @@ class GameScene: SKScene {
             }
         }
     }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        guard let nodeA = contact.bodyA.node else { return }
+        guard let nodeB = contact.bodyB.node else { return }
+        
+        let sortedNodes = [nodeA, nodeB].sorted { $0.name ?? "" < $1.name ?? "" }
+        let firstNode = sortedNodes[0]
+        let secondNode = sortedNodes[1]
+        
+        if secondNode.name == "player" {
+            guard isPlayerAlive else { return }
+            
+            playerShield -= 1
+            
+            if playerShield == 0 {
+                gameOver()
+                secondNode.removeFromParent()
+            }
+            firstNode.removeFromParent()
+        }
+    }
+    
+    func gameOver () {
+        isPlayerAlive = false
+        
+        let gameOver = SKSpriteNode(imageNamed: "gameOver")
+        addChild(gameOver)
+    }
 }
