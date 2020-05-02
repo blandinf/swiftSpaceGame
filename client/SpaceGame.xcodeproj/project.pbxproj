@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD0549B32456E48400222331 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0549B22456E48400222331 /* Game.swift */; };
+		AD0549C02457295C00222331 /* WaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0549BF2457295C00222331 /* WaitingViewController.swift */; };
+		AD0549C2245729B800222331 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0549C1245729B800222331 /* LoginViewController.swift */; };
 		AD4F410F2456B932002AE90D /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD4F41082456B8F3002AE90D /* Starscream.framework */; };
 		AD4F41102456B932002AE90D /* Starscream.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AD4F41082456B8F3002AE90D /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AD4F411B2456C0F9002AE90D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4F411A2456C0F9002AE90D /* Player.swift */; };
@@ -57,6 +60,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AD0549B22456E48400222331 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		AD0549BF2457295C00222331 /* WaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingViewController.swift; sourceTree = "<group>"; };
+		AD0549C1245729B800222331 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AD4F41022456B8F3002AE90D /* Starscream.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Starscream.xcodeproj; path = "../../../../../Downloads/Starscream-master/Starscream.xcodeproj"; sourceTree = "<group>"; };
 		AD4F411A2456C0F9002AE90D /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		AD71420A244999D500F98183 /* SpaceGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +94,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD0549BE2457294B00222331 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AD714215244999D500F98183 /* GameViewController.swift */,
+				AD0549BF2457295C00222331 /* WaitingViewController.swift */,
+				AD0549C1245729B800222331 /* LoginViewController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
 		AD4F41032456B8F3002AE90D /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +135,7 @@
 				ADB719A32449A19500DABA4D /* EnemyType.swift */,
 				ADB719A52449A1DA00DABA4D /* Wave.swift */,
 				AD4F411A2456C0F9002AE90D /* Player.swift */,
+				AD0549B22456E48400222331 /* Game.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -160,6 +177,7 @@
 		AD71420C244999D500F98183 /* SpaceGame */ = {
 			isa = PBXGroup;
 			children = (
+				AD0549BE2457294B00222331 /* controllers */,
 				AD4F41162456BD12002AE90D /* extensions */,
 				AD4F41152456BCE9002AE90D /* nodes */,
 				AD4F41142456BCD6002AE90D /* models */,
@@ -167,7 +185,6 @@
 				AD71420D244999D500F98183 /* AppDelegate.swift */,
 				AD71420F244999D500F98183 /* GameScene.sks */,
 				AD714213244999D500F98183 /* GameScene.swift */,
-				AD714215244999D500F98183 /* GameViewController.swift */,
 				AD714217244999D500F98183 /* Main.storyboard */,
 				AD71421A244999D800F98183 /* Assets.xcassets */,
 				AD71421C244999D800F98183 /* LaunchScreen.storyboard */,
@@ -274,7 +291,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD0549C02457295C00222331 /* WaitingViewController.swift in Sources */,
 				ADB719A82449A25500DABA4D /* Bundle-Decoding.swift in Sources */,
+				AD0549B32456E48400222331 /* Game.swift in Sources */,
 				ADB719AA2449A47100DABA4D /* EnemyNode.swift in Sources */,
 				AD714214244999D500F98183 /* GameScene.swift in Sources */,
 				AD714216244999D500F98183 /* GameViewController.swift in Sources */,
@@ -282,6 +301,7 @@
 				ADB719A42449A19500DABA4D /* EnemyType.swift in Sources */,
 				ADB719A62449A1DA00DABA4D /* Wave.swift in Sources */,
 				AD71420E244999D500F98183 /* AppDelegate.swift in Sources */,
+				AD0549C2245729B800222331 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,6 +1,6 @@
 var WebSocketServer = require('websocket').server;
 var http = require('http');
-var messages = []
+var players = []
 
 var server = http.createServer(function(request, response) {
     console.log((new Date()) + ' Received request for ' + request.url);
@@ -30,14 +30,21 @@ wsServer.on('request', function(request) {
     var connection = request.accept(null, request.origin);
     console.log((new Date()) + ' Connection accepted.');
     connection.on('message', function(message) {
-
-        if (message.type === 'utf8') {
-            messages.push(message.utf8Data)
-            console.log('messages', messages)
-            connection.send(messages)
-        }
+        let player = JSON.parse(message.utf8Data)
+        players.push(player)
+        console.log("players", players)
+        if (players.length >= 2) {
+            console.log("send true")
+            let test = {
+                "bothAreConnected": true
+            }
+            let json = JSON.stringify(test)
+            console.log("json", json)
+            connection.send(json)
+        } 
     });
     connection.on('close', function(reasonCode, description) {
+        bothAreConnected = false
         console.log((new Date()) + ' Peer ' + connection.remoteAddress + ' disconnected.');
     });
 });

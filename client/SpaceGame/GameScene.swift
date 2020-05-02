@@ -29,6 +29,7 @@ class GameScene: SKScene {
     var levelNumber = 0
     var waveNumber = 0
     var playerShield = 3
+    var beginning = true
     
     let positions = Array(stride(from: -320, through: 320, by: 80))
     
