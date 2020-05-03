@@ -20,7 +20,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Connect"/>
                                 <connections>
-                                    <action selector="connect:" destination="BV1-FR-VrT" eventType="touchUpInside" id="tB1-gG-p3y"/>
                                     <segue destination="3BN-Gb-buW" kind="show" identifier="WaitingViewController" id="HDI-01-lhV"/>
                                 </connections>
                             </button>

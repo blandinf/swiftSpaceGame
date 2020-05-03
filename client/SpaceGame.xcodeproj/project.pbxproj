@@ -3,15 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD02702C245EFD9900DDC3A6 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = AD02702B245EFD9900DDC3A6 /* SocketIO */; };
+		AD02702F245EFE0900DDC3A6 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD02702E245EFE0900DDC3A6 /* SocketIOManager.swift */; };
 		AD0549B32456E48400222331 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0549B22456E48400222331 /* Game.swift */; };
 		AD0549C02457295C00222331 /* WaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0549BF2457295C00222331 /* WaitingViewController.swift */; };
 		AD0549C2245729B800222331 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0549C1245729B800222331 /* LoginViewController.swift */; };
-		AD4F410F2456B932002AE90D /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD4F41082456B8F3002AE90D /* Starscream.framework */; };
-		AD4F41102456B932002AE90D /* Starscream.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AD4F41082456B8F3002AE90D /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AD4F411B2456C0F9002AE90D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4F411A2456C0F9002AE90D /* Player.swift */; };
 		AD71420E244999D500F98183 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD71420D244999D500F98183 /* AppDelegate.swift */; };
 		AD714210244999D500F98183 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AD71420F244999D500F98183 /* GameScene.sks */; };
@@ -28,42 +28,11 @@
 		ADB719AA2449A47100DABA4D /* EnemyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB719A92449A47100DABA4D /* EnemyNode.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		AD4F41072456B8F3002AE90D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AD4F41022456B8F3002AE90D /* Starscream.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 33CCF0921F5DDC030099B092;
-			remoteInfo = Starscream;
-		};
-		AD4F41092456B8F3002AE90D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AD4F41022456B8F3002AE90D /* Starscream.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 335FA2021F5DF71D00F6D2EC;
-			remoteInfo = "Starscream Tests";
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		AD4F41112456B932002AE90D /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				AD4F41102456B932002AE90D /* Starscream.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
+		AD02702E245EFE0900DDC3A6 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		AD0549B22456E48400222331 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		AD0549BF2457295C00222331 /* WaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingViewController.swift; sourceTree = "<group>"; };
 		AD0549C1245729B800222331 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		AD4F41022456B8F3002AE90D /* Starscream.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Starscream.xcodeproj; path = "../../../../../Downloads/Starscream-master/Starscream.xcodeproj"; sourceTree = "<group>"; };
 		AD4F411A2456C0F9002AE90D /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		AD71420A244999D500F98183 /* SpaceGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD71420D244999D500F98183 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,13 +56,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD4F410F2456B932002AE90D /* Starscream.framework in Frameworks */,
+				AD02702C245EFD9900DDC3A6 /* SocketIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD02702D245EFDED00DDC3A6 /* managers */ = {
+			isa = PBXGroup;
+			children = (
+				AD02702E245EFE0900DDC3A6 /* SocketIOManager.swift */,
+			);
+			path = managers;
+			sourceTree = "<group>";
+		};
 		AD0549BE2457294B00222331 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,15 +79,6 @@
 				AD0549C1245729B800222331 /* LoginViewController.swift */,
 			);
 			path = controllers;
-			sourceTree = "<group>";
-		};
-		AD4F41032456B8F3002AE90D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				AD4F41082456B8F3002AE90D /* Starscream.framework */,
-				AD4F410A2456B8F3002AE90D /* Starscream Tests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		AD4F410C2456B932002AE90D /* Frameworks */ = {
@@ -159,7 +127,6 @@
 		AD714201244999D500F98183 = {
 			isa = PBXGroup;
 			children = (
-				AD4F41022456B8F3002AE90D /* Starscream.xcodeproj */,
 				AD71420C244999D500F98183 /* SpaceGame */,
 				AD71420B244999D500F98183 /* Products */,
 				AD4F410C2456B932002AE90D /* Frameworks */,
@@ -177,6 +144,7 @@
 		AD71420C244999D500F98183 /* SpaceGame */ = {
 			isa = PBXGroup;
 			children = (
+				AD02702D245EFDED00DDC3A6 /* managers */,
 				AD0549BE2457294B00222331 /* controllers */,
 				AD4F41162456BD12002AE90D /* extensions */,
 				AD4F41152456BCE9002AE90D /* nodes */,
@@ -203,13 +171,15 @@
 				AD714206244999D500F98183 /* Sources */,
 				AD714207244999D500F98183 /* Frameworks */,
 				AD714208244999D500F98183 /* Resources */,
-				AD4F41112456B932002AE90D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = SpaceGame;
+			packageProductDependencies = (
+				AD02702B245EFD9900DDC3A6 /* SocketIO */,
+			);
 			productName = SpaceGame;
 			productReference = AD71420A244999D500F98183 /* SpaceGame.app */;
 			productType = "com.apple.product-type.application";
@@ -238,37 +208,17 @@
 				Base,
 			);
 			mainGroup = AD714201244999D500F98183;
+			packageReferences = (
+				AD02702A245EFD9900DDC3A6 /* XCRemoteSwiftPackageReference "socket" */,
+			);
 			productRefGroup = AD71420B244999D500F98183 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = AD4F41032456B8F3002AE90D /* Products */;
-					ProjectRef = AD4F41022456B8F3002AE90D /* Starscream.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				AD714209244999D500F98183 /* SpaceGame */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		AD4F41082456B8F3002AE90D /* Starscream.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Starscream.framework;
-			remoteRef = AD4F41072456B8F3002AE90D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AD4F410A2456B8F3002AE90D /* Starscream Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "Starscream Tests.xctest";
-			remoteRef = AD4F41092456B8F3002AE90D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		AD714208244999D500F98183 /* Resources */ = {
@@ -295,6 +245,7 @@
 				ADB719A82449A25500DABA4D /* Bundle-Decoding.swift in Sources */,
 				AD0549B32456E48400222331 /* Game.swift in Sources */,
 				ADB719AA2449A47100DABA4D /* EnemyNode.swift in Sources */,
+				AD02702F245EFE0900DDC3A6 /* SocketIOManager.swift in Sources */,
 				AD714214244999D500F98183 /* GameScene.swift in Sources */,
 				AD714216244999D500F98183 /* GameViewController.swift in Sources */,
 				AD4F411B2456C0F9002AE90D /* Player.swift in Sources */,
@@ -499,6 +450,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AD02702A245EFD9900DDC3A6 /* XCRemoteSwiftPackageReference "socket" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AD02702B245EFD9900DDC3A6 /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD02702A245EFD9900DDC3A6 /* XCRemoteSwiftPackageReference "socket" */;
+			productName = SocketIO;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AD714202244999D500F98183 /* Project object */;
 }

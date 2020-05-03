@@ -7,16 +7,13 @@
 //
 
 import UIKit
-import Starscream
+import SocketIO
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var username: UITextField!
-    var socket: WebSocket!
-    var isConnected = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        socketConnection()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -27,14 +24,5 @@ class LoginViewController: UIViewController {
                 }
             }
         }
-    }
-    
-    func socketConnection() {
-       socket = WebSocket(request: URLRequest(url: URL(string: "ws://localhost:8080/")!))
-       socket.connect()
-    }
-    
-    @IBAction func connect(_ sender: Any) {
-        
     }
 }
