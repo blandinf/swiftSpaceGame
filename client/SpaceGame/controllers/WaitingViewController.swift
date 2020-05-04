@@ -11,11 +11,15 @@ import UIKit
 class WaitingViewController: UIViewController {
     @IBOutlet weak var usernameLbl: UILabel!
     var usernameTxt = ""
+    var player: Player?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         usernameLbl.text = usernameTxt
-        sendToServer(username: usernameTxt)
+        if !usernameTxt.isEmpty {
+            player = Player(name: usernameTxt)
+            sendToServer(player: player!)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -24,15 +28,24 @@ class WaitingViewController: UIViewController {
         })
     }
     
-    func sendToServer(username: String) {
-        let player = Player(name: username)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GameViewController" {
+            if let destination = segue.destination as? GameViewController {
+                if let myPlayer = player {
+                    destination.currentPlayer = myPlayer
+                }
+            }
+        }
+    }
+    
+    func sendToServer(player: Player) {
         let jsonEncoder = JSONEncoder()
         do {
             let jsonData = try jsonEncoder.encode(player)
             print(jsonData)
             if let json = String(data: jsonData, encoding: .utf8) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                    print("socket write")
+                    print("send playerConnect")
                     SocketIOManager.sharedInstance.emit(event: "playerConnect", message: ["player": json])
                 }
             }

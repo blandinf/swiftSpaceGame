@@ -11,10 +11,31 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
+    
+    var currentPlayer: Player? = nil
         
     override func viewDidLoad() {
         super.viewDidLoad()
         presentScene()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        SocketIOManager.sharedInstance.listen(event: "winnerIs", callback: { (data, ack) in
+            print("winnerIs")
+            if let player = self.currentPlayer {
+                if let result = data[0] as? String {
+                    print("result \(result)")
+                    print("player id \(player.id)")
+                    if player.id == result {
+                        print(player.name)
+                        print("You loose")
+                    } else {
+                        print(player.name)
+                        print("You win")
+                    }
+                }
+            }
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,8 +50,9 @@ class GameViewController: UIViewController {
     
     func presentScene () {
         if let view = self.view as! SKView? {
-            if let scene = SKScene(fileNamed: "GameScene") {
+            if let scene = GameScene(fileNamed: "GameScene") {
                 scene.scaleMode = .aspectFill
+                scene.gameDelegate = self
                 view.presentScene(scene)
             }
             view.ignoresSiblingOrder = true
@@ -55,11 +77,23 @@ class GameViewController: UIViewController {
     }
 }
 
-extension UIView {
-    func pinEdges(to other: UIView) {
-        leadingAnchor.constraint(equalTo: other.leadingAnchor).isActive = true
-        trailingAnchor.constraint(equalTo: other.trailingAnchor).isActive = true
-        topAnchor.constraint(equalTo: other.topAnchor).isActive = true
-        bottomAnchor.constraint(equalTo: other.bottomAnchor).isActive = true
+extension GameViewController: GameDelegate {
+    
+    func gameOver() {
+        let jsonEncoder = JSONEncoder()
+        do {
+            if let player = currentPlayer {
+                let jsonData = try jsonEncoder.encode(player)
+                print(jsonData)
+                if let json = String(data: jsonData, encoding: .utf8) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                        print("send playerIsDead")
+                        SocketIOManager.sharedInstance.emit(event: "playerIsDead", message: ["player": json])
+                    }
+                }
+            }
+        } catch {
+            print("error")
+        }
     }
 }

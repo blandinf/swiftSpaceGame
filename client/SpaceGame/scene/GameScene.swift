@@ -30,6 +30,7 @@ class GameScene: SKScene {
     var waveNumber = 0
     var playerShield = 3
     var beginning = true
+    var gameDelegate: GameDelegate?
     
     let positions = Array(stride(from: -320, through: 320, by: 80))
     
@@ -48,8 +49,7 @@ class GameScene: SKScene {
         player.physicsBody?.collisionBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
         player.physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
         player.physicsBody?.isDynamic = false
-        
-//        launchVideoInLoop()
+        //        launchVideoInLoop()
     }
     
     func launchVideoInLoop() {
@@ -136,6 +136,9 @@ class GameScene: SKScene {
     
     func gameOver () {
         isPlayerAlive = false
+        if let delegate = self.gameDelegate {
+            delegate.gameOver()
+        }
         
         let gameOver = SKSpriteNode(imageNamed: "gameOver")
         addChild(gameOver)
