@@ -16,22 +16,26 @@ class GameViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        presentScene()
+        if let view = self.view as! SKView? {
+            if let scene = GameScene(fileNamed: "GameScene") {
+                scene.scaleMode = .aspectFill
+                scene.gameDelegate = self
+                view.presentScene(scene)
+                whoIsTheWinner(scene: scene)
+            }
+            view.ignoresSiblingOrder = true
+            view.showsPhysics = true
+        }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    func whoIsTheWinner(scene: GameScene) {
         SocketIOManager.sharedInstance.listen(event: "winnerIs", callback: { (data, ack) in
-            print("winnerIs")
             if let player = self.currentPlayer {
                 if let result = data[0] as? String {
-                    print("result \(result)")
-                    print("player id \(player.id)")
                     if player.id == result {
-                        print(player.name)
-                        print("You loose")
+                         scene.displayYourRank(true)
                     } else {
-                        print(player.name)
-                        print("You win")
+                         scene.displayYourRank()
                     }
                 }
             }
@@ -49,15 +53,7 @@ class GameViewController: UIViewController {
     }
     
     func presentScene () {
-        if let view = self.view as! SKView? {
-            if let scene = GameScene(fileNamed: "GameScene") {
-                scene.scaleMode = .aspectFill
-                scene.gameDelegate = self
-                view.presentScene(scene)
-            }
-            view.ignoresSiblingOrder = true
-            view.showsPhysics = true
-        }
+        
     }
     
     override var shouldAutorotate: Bool {

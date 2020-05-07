@@ -22,6 +22,7 @@ class GameScene: SKScene {
     let player = SKSpriteNode(imageNamed: "player")
     let waves = Bundle.main.decode([Wave].self, from: "waves.json")
     let enemyTypes = Bundle.main.decode([EnemyType].self, from: "enemy-types.json")
+    let gameOverImg = SKSpriteNode(imageNamed: "gameOver")
     var avPlayer = AVPlayer()
 
     
@@ -140,8 +141,18 @@ class GameScene: SKScene {
             delegate.gameOver()
         }
         
-        let gameOver = SKSpriteNode(imageNamed: "gameOver")
-        addChild(gameOver)
+        addChild(gameOverImg)
+    }
+    
+    func displayYourRank (_ winner: Bool = false) {
+        gameOverImg.removeFromParent()
+        if winner {
+            let winner = SKSpriteNode(imageNamed: "winner")
+            addChild(winner)
+        } else {
+            let looser = SKSpriteNode(imageNamed: "looser")
+            addChild(looser)
+        }
     }
 }
 
