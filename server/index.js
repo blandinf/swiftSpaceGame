@@ -17,6 +17,10 @@ io.on('connection', (socket) => {
     playerIsDead(msg)
   })
 
+  socket.on('catchBonus', (msg) => {
+      catchBonus(msg)
+  })
+
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });
@@ -46,4 +50,14 @@ function playerIsDead (msg) {
         console.log("send winner")
         io.emit("winnerIs", deadPlayers[1].id)
     }
+}
+
+function catchBonus (msg) {
+    let player = JSON.parse(msg.player)
+    let bonusType = msg.bonus
+    let bonus = {
+        playerIdToInflige: player.id,
+        type: bonusType
+    }
+    io.emit("infligeBonus", JSON.stringify(bonus))
 }

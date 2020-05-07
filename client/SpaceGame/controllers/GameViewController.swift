@@ -21,11 +21,33 @@ class GameViewController: UIViewController {
                 scene.scaleMode = .aspectFill
                 scene.gameDelegate = self
                 view.presentScene(scene)
+                infligeBonus(scene: scene)
                 whoIsTheWinner(scene: scene)
             }
             view.ignoresSiblingOrder = true
             view.showsPhysics = true
         }
+    }
+    
+    func infligeBonus(scene: GameScene) {
+        SocketIOManager.sharedInstance.listen(event: "infligeBonus", callback: { (data, ack) in
+            if let dataAsString = data[0] as? String {
+                if let jsonData = dataAsString.data(using: .utf8)
+                {
+                    let decoder = JSONDecoder()
+                    do {
+                        let bonus = try decoder.decode(Bonus.self, from: jsonData)
+                        if let player = self.currentPlayer {
+                            if bonus.playerIdToInflige != player.id {
+                                scene.infligeBonus(type: bonus.type)
+                            }
+                        }
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+        })
     }
     
     func whoIsTheWinner(scene: GameScene) {
@@ -78,14 +100,26 @@ extension GameViewController: GameDelegate {
                 let jsonData = try jsonEncoder.encode(player)
                 print(jsonData)
                 if let json = String(data: jsonData, encoding: .utf8) {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                        print("send playerIsDead")
-                        SocketIOManager.sharedInstance.emit(event: "playerIsDead", message: ["player": json])
-                    }
+                    SocketIOManager.sharedInstance.emit(event: "playerIsDead", message: ["player": json])
                 }
             }
         } catch {
             print("error")
+        }
+    }
+    
+    func catchBonus(type: String) {
+        let jsonEncoder = JSONEncoder()
+        do {
+           if let player = currentPlayer {
+               let jsonData = try jsonEncoder.encode(player)
+               print(jsonData)
+               if let json = String(data: jsonData, encoding: .utf8) {
+                    SocketIOManager.sharedInstance.emit(event: "catchBonus", message: ["player": json, "bonus": type])
+               }
+           }
+        } catch {
+           print("error")
         }
     }
 }

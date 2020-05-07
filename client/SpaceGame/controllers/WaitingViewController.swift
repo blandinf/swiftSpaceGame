@@ -44,7 +44,7 @@ class WaitingViewController: UIViewController {
             let jsonData = try jsonEncoder.encode(player)
             print(jsonData)
             if let json = String(data: jsonData, encoding: .utf8) {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                     print("send playerConnect")
                     SocketIOManager.sharedInstance.emit(event: "playerConnect", message: ["player": json])
                 }

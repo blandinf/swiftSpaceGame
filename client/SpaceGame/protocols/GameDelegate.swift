@@ -10,4 +10,5 @@ import Foundation
 
 @objc protocol GameDelegate {
     func gameOver()
+    func catchBonus(type: String)
 }

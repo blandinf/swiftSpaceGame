@@ -11,9 +11,15 @@ import AVKit
 
 enum CollisionType: UInt32 {
     case player = 1
-    case playerWeapon = 2
+    case bonus = 2
     case enemy = 4
-    case enemyWeapon = 8
+}
+
+enum BonusTypes: String {
+    case STONE = "stone"
+    case BALLOON = "balloon"
+    case FLASHLIGHT = "flashlight"
+    case ICE = "ice"
 }
 
 class GameScene: SKScene {
@@ -25,6 +31,9 @@ class GameScene: SKScene {
     let bonusTypes = Bundle.main.decode([BonusType].self, from: "bonus-types.json")
     let gameOverImg = SKSpriteNode(imageNamed: "gameOver")
     var avPlayer = AVPlayer()
+    var birdFrozen = false
+    var birdTouches: Int = 0
+    var displaySize = UIScreen.main.bounds
     
     var isPlayerAlive = true
     var levelNumber = 0
@@ -47,8 +56,8 @@ class GameScene: SKScene {
         
         player.physicsBody = SKPhysicsBody(rectangleOf: player.texture!.size())
         player.physicsBody?.categoryBitMask = CollisionType.player.rawValue
-        player.physicsBody?.collisionBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
-        player.physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
+        player.physicsBody?.collisionBitMask = CollisionType.enemy.rawValue | CollisionType.bonus.rawValue
+        player.physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue | CollisionType.bonus.rawValue
         player.physicsBody?.isDynamic = false
         //        launchVideoInLoop()
     }
@@ -77,14 +86,32 @@ class GameScene: SKScene {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches {
-            let location = touch.location(in: self)
-            player.position.y = location.y
-            
-            if player.position.y + PLAYER_HEIGHT > frame.maxY {
-                player.position.y = frame.maxY - PLAYER_HEIGHT
-            } else if player.position.y - PLAYER_HEIGHT < frame.minY {
-                player.position.y = frame.minY + PLAYER_HEIGHT
+        if !birdFrozen {
+            for touch in touches {
+                let location = touch.location(in: self)
+                player.position.y = location.y
+                
+                if player.position.y + PLAYER_HEIGHT > frame.maxY {
+                    player.position.y = frame.maxY - PLAYER_HEIGHT
+                } else if player.position.y - PLAYER_HEIGHT < frame.minY {
+                    player.position.y = frame.minY + PLAYER_HEIGHT
+                }
+            }
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if birdFrozen {
+            for touch in touches {
+                let location = touch.location(in: self)
+                let node : SKNode = self.atPoint(location)
+                if node.name == "player" {
+                    birdTouches = birdTouches + 1
+                    if birdTouches == 3 {
+                        birdTouches = 0
+                        birdFrozen = false
+                    }
+                }
             }
         }
     }
@@ -119,7 +146,6 @@ class GameScene: SKScene {
         let maximumEnemyType = min(enemyTypes.count, levelNumber + 1)
         let enemyType = Int.random(in: 0..<maximumEnemyType)
         let bonusType = Int.random(in: 0..<bonusTypes.count)
-        print("bonusType \(bonusType)")
         
         let enemyOffsetX: CGFloat = 100
         let enemyStartX = 600
@@ -138,9 +164,8 @@ class GameScene: SKScene {
         
         if !currentWave.bonus.isEmpty {
             for bonus in currentWave.bonus {
-                let type = bonusTypes[bonusType]
+                let type = bonusTypes[0]
                 let node = BonusNode(type: type, startPosition: CGPoint(x: 600, y: positions[bonus.position]), xOffset: 100 * bonus.xOffset)
-                print("")
                 if node.appear(chanceToAppear: type.chanceToAppear) {
                     addChild(node)
                 }
@@ -167,6 +192,56 @@ class GameScene: SKScene {
         }
         addChild(nodeToDisplay)
     }
+    
+    func infligeBonus (type: String) {
+        print("infligeBonus \(type)")
+        switch type {
+            case BonusTypes.BALLOON.rawValue:
+                balloonEffect()
+            case BonusTypes.FLASHLIGHT.rawValue:
+                flashlightEffect()
+            case BonusTypes.STONE.rawValue:
+                stoneEffect()
+            case BonusTypes.ICE.rawValue:
+                iceEffect()
+            default:
+                balloonEffect()
+        }
+    }
+    
+    func balloonEffect () {
+        player.size = CGSize(width: 80, height: 80)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            self.player.size = self.player.texture!.size()
+        }
+    }
+    
+    func flashlightEffect () {
+        let broken = SKSpriteNode(imageNamed: "broken")
+        broken.size = CGSize(width: displaySize.width, height: displaySize.height)
+        addChild(broken)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            broken.removeFromParent()
+        }
+    }
+    
+    func stoneEffect () {
+        let broken = SKSpriteNode(imageNamed: "broken")
+        broken.size = CGSize(width: displaySize.width, height: displaySize.height)
+        addChild(broken)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            broken.removeFromParent()
+        }
+    }
+    
+    func iceEffect () {
+        birdFrozen = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            if self.birdFrozen {
+                self.birdFrozen = false
+            }
+        }
+    }
 }
 
 extension GameScene: SKPhysicsContactDelegate {
@@ -179,7 +254,7 @@ extension GameScene: SKPhysicsContactDelegate {
         let firstNode = sortedNodes[0]
         let secondNode = sortedNodes[1]
         
-        if secondNode.name == "player" {
+        if firstNode.name == "enemy" && secondNode.name == "player" {
             guard isPlayerAlive else { return }
             
             playerShield -= 1
@@ -187,6 +262,13 @@ extension GameScene: SKPhysicsContactDelegate {
             if playerShield == 0 {
                 gameOver()
                 secondNode.removeFromParent()
+            }
+            firstNode.removeFromParent()
+        } else if firstNode.name == "bonus" && secondNode.name == "player" {
+            if let bonus = firstNode as? BonusNode {
+                if let delegate = self.gameDelegate {
+                    delegate.catchBonus(type: bonus.type.name)
+                }
             }
             firstNode.removeFromParent()
         }

@@ -23,8 +23,8 @@ class EnemyNode: SKSpriteNode {
 //        physicsBody = SKPhysicsBody(texture: texture, size: texture.size())
         physicsBody = SKPhysicsBody(rectangleOf: texture.size())
         physicsBody?.categoryBitMask = CollisionType.enemy.rawValue
-        physicsBody?.collisionBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
-        physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
+        physicsBody?.collisionBitMask = CollisionType.enemy.rawValue
+        physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue
         name = "enemy"
         position = CGPoint(x: startPosition.x + xOffset, y: startPosition.y)
         

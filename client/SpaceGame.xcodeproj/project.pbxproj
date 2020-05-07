@@ -30,6 +30,7 @@
 		ADF9391C2463EA7C00E1CD01 /* BonusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF9391B2463EA7C00E1CD01 /* BonusType.swift */; };
 		ADF9391E2463EB0500E1CD01 /* bonus-types.json in Resources */ = {isa = PBXBuildFile; fileRef = ADF9391D2463EB0500E1CD01 /* bonus-types.json */; };
 		ADF939202463EC0900E1CD01 /* BonusNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF9391F2463EC0900E1CD01 /* BonusNode.swift */; };
+		ADF939222464180500E1CD01 /* Bonus.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF939212464180500E1CD01 /* Bonus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		ADF9391B2463EA7C00E1CD01 /* BonusType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusType.swift; sourceTree = "<group>"; };
 		ADF9391D2463EB0500E1CD01 /* bonus-types.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "bonus-types.json"; sourceTree = "<group>"; };
 		ADF9391F2463EC0900E1CD01 /* BonusNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusNode.swift; sourceTree = "<group>"; };
+		ADF939212464180500E1CD01 /* Bonus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bonus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 				AD4F411A2456C0F9002AE90D /* Player.swift */,
 				AD0549B22456E48400222331 /* Game.swift */,
 				ADF9391B2463EA7C00E1CD01 /* BonusType.swift */,
+				ADF939212464180500E1CD01 /* Bonus.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				ADB719A62449A1DA00DABA4D /* Wave.swift in Sources */,
 				AD71420E244999D500F98183 /* AppDelegate.swift in Sources */,
 				ADF9391C2463EA7C00E1CD01 /* BonusType.swift in Sources */,
+				ADF939222464180500E1CD01 /* Bonus.swift in Sources */,
 				AD0549C2245729B800222331 /* LoginViewController.swift in Sources */,
 				AD027031245F531200DDC3A6 /* GameDelegate.swift in Sources */,
 			);

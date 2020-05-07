@@ -18,9 +18,9 @@ class BonusNode: SKSpriteNode {
         super.init(texture: texture, color: .white, size: texture.size())
         
         physicsBody = SKPhysicsBody(rectangleOf: texture.size())
-        physicsBody?.categoryBitMask = CollisionType.enemy.rawValue
-        physicsBody?.collisionBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
-        physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
+        physicsBody?.categoryBitMask = CollisionType.bonus.rawValue
+        physicsBody?.collisionBitMask = CollisionType.bonus.rawValue
+        physicsBody?.contactTestBitMask = CollisionType.bonus.rawValue
         name = "bonus"
         position = CGPoint(x: startPosition.x + xOffset, y: startPosition.y)
         
@@ -43,10 +43,7 @@ class BonusNode: SKSpriteNode {
    }
     
     func appear(chanceToAppear: CGFloat) -> Bool {
-        print("appear?")
         var randomNumber = CGFloat.random(in: 0.0..<1.0)
-        print("randomNumber \(randomNumber)")
-        print("chanceToAppear \(chanceToAppear)")
         
         if randomNumber > chanceToAppear {
             return true
