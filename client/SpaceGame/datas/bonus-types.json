@@ -1,0 +1,22 @@
+[
+    {
+        "name": "stone",
+        "speed": 400,
+        "chanceToAppear": 0.5
+    },
+    {
+        "name": "balloon",
+        "speed": 500,
+        "chanceToAppear": 0.4
+    },
+    {
+        "name": "flashlight",
+        "speed": 600,
+        "chanceToAppear": 0.3
+    },
+    {
+        "name": "ice",
+        "speed": 700,
+        "chanceToAppear": 0.2
+    }
+]

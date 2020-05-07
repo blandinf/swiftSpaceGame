@@ -17,7 +17,13 @@
 				"xOffset": 2,
 				"moveStraight": true
 			}
-		]
+		],
+        "bonus": [
+            {
+                "position": 0,
+                "xOffset": 0,
+            },
+        ]
 	},
 	{
 		"name": "medium",
@@ -52,7 +58,13 @@
 				"xOffset": 5,
 				"moveStraight": false
 			},
-		]
+		],
+        "bonus": [
+            {
+                "position": 3,
+                "xOffset": 0,
+            },
+        ]
 	},
 	{
 		"name": "large",
@@ -122,11 +134,19 @@
 				"xOffset": 9,
 				"moveStraight": false
 			},
-		]
+		],
+        "bonus": [
+            {
+                "position": 0,
+                "xOffset": 0,
+            },
+        ]
 	},
 	{
 		"name": "random",
 		"enemies": [
-		]
+		],
+        "bonus": [
+        ]
 	}
 ]

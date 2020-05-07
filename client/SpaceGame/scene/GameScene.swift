@@ -22,9 +22,9 @@ class GameScene: SKScene {
     let player = SKSpriteNode(imageNamed: "player")
     let waves = Bundle.main.decode([Wave].self, from: "waves.json")
     let enemyTypes = Bundle.main.decode([EnemyType].self, from: "enemy-types.json")
+    let bonusTypes = Bundle.main.decode([BonusType].self, from: "bonus-types.json")
     let gameOverImg = SKSpriteNode(imageNamed: "gameOver")
     var avPlayer = AVPlayer()
-
     
     var isPlayerAlive = true
     var levelNumber = 0
@@ -118,6 +118,8 @@ class GameScene: SKScene {
         
         let maximumEnemyType = min(enemyTypes.count, levelNumber + 1)
         let enemyType = Int.random(in: 0..<maximumEnemyType)
+        let bonusType = Int.random(in: 0..<bonusTypes.count)
+        print("bonusType \(bonusType)")
         
         let enemyOffsetX: CGFloat = 100
         let enemyStartX = 600
@@ -133,6 +135,17 @@ class GameScene: SKScene {
                 addChild(node)
             }
         }
+        
+        if !currentWave.bonus.isEmpty {
+            for bonus in currentWave.bonus {
+                let type = bonusTypes[bonusType]
+                let node = BonusNode(type: type, startPosition: CGPoint(x: 600, y: positions[bonus.position]), xOffset: 100 * bonus.xOffset)
+                print("")
+                if node.appear(chanceToAppear: type.chanceToAppear) {
+                    addChild(node)
+                }
+            }
+        }
     }
     
     func gameOver () {
@@ -146,13 +159,13 @@ class GameScene: SKScene {
     
     func displayYourRank (_ winner: Bool = false) {
         gameOverImg.removeFromParent()
+        var nodeToDisplay = SKSpriteNode()
         if winner {
-            let winner = SKSpriteNode(imageNamed: "winner")
-            addChild(winner)
+            nodeToDisplay = SKSpriteNode(imageNamed: "winner")
         } else {
-            let looser = SKSpriteNode(imageNamed: "looser")
-            addChild(looser)
+            nodeToDisplay = SKSpriteNode(imageNamed: "looser")
         }
+        addChild(nodeToDisplay)
     }
 }
 

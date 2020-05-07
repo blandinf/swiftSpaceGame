@@ -52,10 +52,6 @@ class GameViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    func presentScene () {
-        
-    }
-    
     override var shouldAutorotate: Bool {
         return true
     }
