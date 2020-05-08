@@ -25,7 +25,9 @@ enum BonusTypes: String {
 class GameScene: SKScene {
     let PLAYER_HEIGHT: CGFloat = 30.0
     let PLAYER_WIDTH: CGFloat = 75.0
-    let player = SKSpriteNode(imageNamed: "player")
+    
+    let player = SKSpriteNode(imageNamed: "bird-step01")
+    
     let waves = Bundle.main.decode([Wave].self, from: "waves.json")
     let enemyTypes = Bundle.main.decode([EnemyType].self, from: "enemy-types.json")
     let bonusTypes = Bundle.main.decode([BonusType].self, from: "bonus-types.json")
@@ -54,11 +56,24 @@ class GameScene: SKScene {
         player.zPosition = 1
         addChild(player)
         
-        player.physicsBody = SKPhysicsBody(rectangleOf: player.texture!.size())
+        player.size = CGSize(width: 100, height: 100)
+        player.physicsBody = SKPhysicsBody(rectangleOf: player.size)
         player.physicsBody?.categoryBitMask = CollisionType.player.rawValue
         player.physicsBody?.collisionBitMask = CollisionType.enemy.rawValue | CollisionType.bonus.rawValue
         player.physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue | CollisionType.bonus.rawValue
         player.physicsBody?.isDynamic = false
+        
+        var textures: [SKTexture] = []
+        for i in 1...4 {
+            textures.append(SKTexture(imageNamed: "bird-step\(i)"))
+        }
+        textures.append(textures[2])
+        textures.append(textures[1])
+        
+        var birdAnimation = SKAction.animate(with: textures, timePerFrame: 0.1)
+        
+        player.run(SKAction.repeatForever(birdAnimation))
+        
         //        launchVideoInLoop()
     }
     
@@ -164,7 +179,7 @@ class GameScene: SKScene {
         
         if !currentWave.bonus.isEmpty {
             for bonus in currentWave.bonus {
-                let type = bonusTypes[0]
+                let type = bonusTypes[bonusType]
                 let node = BonusNode(type: type, startPosition: CGPoint(x: 600, y: positions[bonus.position]), xOffset: 100 * bonus.xOffset)
                 if node.appear(chanceToAppear: type.chanceToAppear) {
                     addChild(node)
@@ -210,9 +225,11 @@ class GameScene: SKScene {
     }
     
     func balloonEffect () {
-        player.size = CGSize(width: 80, height: 80)
+        player.size = CGSize(width: 150, height: 150)
+        player.physicsBody = SKPhysicsBody(rectangleOf: player.size)
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-            self.player.size = self.player.texture!.size()
+            self.player.size = CGSize(width: 100, height: 100)
+            self.player.physicsBody = SKPhysicsBody(rectangleOf: self.player.size)
         }
     }
     

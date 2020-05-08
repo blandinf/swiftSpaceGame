@@ -2,7 +2,7 @@
     {
         "name": "stone",
         "speed": 400,
-        "chanceToAppear": 0
+        "chanceToAppear": 0.5
     },
     {
         "name": "balloon",
