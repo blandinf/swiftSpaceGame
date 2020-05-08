@@ -63,6 +63,13 @@ class GameScene: SKScene {
         player.physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue | CollisionType.bonus.rawValue
         player.physicsBody?.isDynamic = false
         
+        animatePlayer()
+        
+        
+        //        launchVideoInLoop()
+    }
+    
+    func animatePlayer() {
         var textures: [SKTexture] = []
         for i in 1...4 {
             textures.append(SKTexture(imageNamed: "bird-step\(i)"))
@@ -73,9 +80,8 @@ class GameScene: SKScene {
         var birdAnimation = SKAction.animate(with: textures, timePerFrame: 0.1)
         
         player.run(SKAction.repeatForever(birdAnimation))
-        
-        //        launchVideoInLoop()
     }
+    
     
     func launchVideoInLoop() {
 //        let videoNode: SKVideoNode? = {
