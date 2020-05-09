@@ -9,15 +9,11 @@
 import SpriteKit
 
 struct Wave: Codable {
-    struct WaveEnemy: Codable {
-        let position: Int
-        let xOffset: CGFloat
-    }
-    struct WaveBonus: Codable {
+    struct WaveItem: Codable {
         let position: Int
         let xOffset: CGFloat
     }
     let name: String
-    let enemies: [WaveEnemy]
-    let bonus: [WaveBonus]
+    let enemies: [WaveItem]
+    let bonus: [WaveItem]
 }

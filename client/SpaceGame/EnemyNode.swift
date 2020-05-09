@@ -48,7 +48,7 @@ class EnemyNode: SKSpriteNode {
         if type.name != "trunk" {
             size = CGSize(width: type.width, height: type.height)
         } else {
-            let randomHeight = Int.random(in: type.height...320)
+            let randomHeight = Int.random(in: type.height...620)
             size = CGSize(width: type.width, height: randomHeight)
         }
     

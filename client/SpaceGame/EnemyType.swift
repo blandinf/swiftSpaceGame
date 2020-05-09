@@ -14,4 +14,5 @@ struct EnemyType: Codable {
     let width: Int
     let height: Int
     let variety: Int
+    let location: String
 }

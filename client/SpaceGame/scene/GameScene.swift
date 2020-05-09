@@ -44,7 +44,7 @@ class GameScene: SKScene {
     var beginning = true
     var gameDelegate: GameDelegate?
     
-    let positions = Array(stride(from: -320, through: 320, by: 80))
+    let positions = Array(stride(from: 0, through: 320, by: 80))
     
     override func didMove(to view: SKView) {
         physicsWorld.gravity = .zero
@@ -64,7 +64,6 @@ class GameScene: SKScene {
         player.physicsBody?.isDynamic = false
         
         animatePlayer()
-        
         
         //        launchVideoInLoop()
     }
@@ -170,17 +169,29 @@ class GameScene: SKScene {
         
         let enemyOffsetX: CGFloat = 100
         let enemyStartX = 600
+        
+        
 
         if currentWave.enemies.isEmpty {
-            for (index, position) in positions.shuffled().enumerated() {
-                let enemy = EnemyNode(type: enemyTypes[enemyType], startPosition: CGPoint(x: enemyStartX, y: position), xOffset: enemyOffsetX * CGFloat(index * 3))
+            print("positions.shuffled().enumerated() \(positions.shuffled().enumerated())")
+            for (index, var position) in positions.shuffled().enumerated() {
+                let type = enemyTypes[enemyType]
+                if type.location == "air" {
+                    if position < 0 {
+                        position = position * -1
+                    }
+                } else {
+                    position = -320
+                }
+                print("position \(position)")
+                let enemy = EnemyNode(type: type, startPosition: CGPoint(x: enemyStartX, y: position), xOffset: enemyOffsetX * CGFloat(index * 3))
                 addChild(enemy)
             }
         } else {
-            for enemy in currentWave.enemies {
-                let node = EnemyNode(type: enemyTypes[enemyType], startPosition: CGPoint(x: enemyStartX, y: positions[enemy.position]), xOffset: enemyOffsetX * enemy.xOffset)
-                addChild(node)
-            }
+//            for enemy in currentWave.enemies {
+//                let node = EnemyNode(type: enemyTypes[enemyType], startPosition: CGPoint(x: enemyStartX, y: positions[enemy.position]), xOffset: enemyOffsetX * enemy.xOffset)
+//                addChild(node)
+//            }
         }
         
         if !currentWave.bonus.isEmpty {

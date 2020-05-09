@@ -4,22 +4,23 @@
 		"speed": 600,
         "width": 180,
         "height": 60,
-        "variety": 1
+        "variety": 1,
+        "location": "air"
 	},
 	{
 		"name": "cloud",
-		"speed": 400,
-		"powerUpChance": 5,
+		"speed": 500,
         "width": 120,
         "height": 80,
-        "variety": 4
+        "variety": 4,
+        "location": "air"
 	},
 	{
 		"name": "trunk",
-		"speed": 200,
-		"powerUpChance": 2,
+		"speed": 400,
         "width": 80,
         "height": 150,
-        "variety": 7
+        "variety": 7,
+        "location": "ground"
 	}
 ]
