@@ -65,7 +65,7 @@ class GameScene: SKScene {
         
         animatePlayer()
         
-        //        launchVideoInLoop()
+//        launchVideoInLoop()
     }
     
     func animatePlayer() {
@@ -88,15 +88,15 @@ class GameScene: SKScene {
 //            let url = URL(fileURLWithPath: urlString)
 //            let item = AVPlayerItem(url: url)
 //            avPlayer = AVPlayer(playerItem: item)
-//            
+//
 //            return SKVideoNode(avPlayer: avPlayer)
 //        }()
-//        
+//
 //        videoNode?.position = CGPoint( x: frame.midX, y: frame.midY)
 //        videoNode?.zPosition = 0
 //        addChild((videoNode)!)
 //        avPlayer.play()
-//        
+//
 //        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: avPlayer.currentItem, queue: nil)
 //        { notification in
 //            self.avPlayer.seek(to: CMTime.zero)
@@ -164,17 +164,14 @@ class GameScene: SKScene {
         waveNumber += 1
         
         let maximumEnemyType = min(enemyTypes.count, levelNumber + 1)
-        let enemyType = Int.random(in: 0..<maximumEnemyType)
         let bonusType = Int.random(in: 0..<bonusTypes.count)
         
-        let enemyOffsetX: CGFloat = 100
+        let enemyOffsetX: CGFloat = 60
         let enemyStartX = 600
-        
-        
 
         if currentWave.enemies.isEmpty {
-            print("positions.shuffled().enumerated() \(positions.shuffled().enumerated())")
             for (index, var position) in positions.shuffled().enumerated() {
+                let enemyType = Int.random(in: 0..<maximumEnemyType)
                 let type = enemyTypes[enemyType]
                 if type.location == "air" {
                     if position < 0 {
@@ -183,16 +180,10 @@ class GameScene: SKScene {
                 } else {
                     position = -320
                 }
-                print("position \(position)")
                 let enemy = EnemyNode(type: type, startPosition: CGPoint(x: enemyStartX, y: position), xOffset: enemyOffsetX * CGFloat(index * 3))
                 addChild(enemy)
             }
-        } else {
-//            for enemy in currentWave.enemies {
-//                let node = EnemyNode(type: enemyTypes[enemyType], startPosition: CGPoint(x: enemyStartX, y: positions[enemy.position]), xOffset: enemyOffsetX * enemy.xOffset)
-//                addChild(node)
-//            }
-        }
+        } 
         
         if !currentWave.bonus.isEmpty {
             for bonus in currentWave.bonus {

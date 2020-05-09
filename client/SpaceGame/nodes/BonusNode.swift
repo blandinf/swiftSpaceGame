@@ -52,13 +52,13 @@ class BonusNode: SKSpriteNode {
        
         path.addCurve(to: CGPoint(x: -3500, y: 0), controlPoint1: CGPoint(x: 0, y: -position.y * 4), controlPoint2: CGPoint(x: -1000, y: -position.y))
        
-       let movement = SKAction.follow(path.cgPath, asOffset: true, orientToPath: true, speed: type.speed)
+       let movement = SKAction.follow(path.cgPath, asOffset: true, orientToPath: false, speed: type.speed)
        let sequence = SKAction.sequence([movement, .removeFromParent()])
        run(sequence)
    }
     
     func appear(chanceToAppear: CGFloat) -> Bool {
-        var randomNumber = CGFloat.random(in: 0.0..<1.0)
+        var randomNumber = CGFloat.random(in: 0.0...1.0)
         
         if randomNumber > chanceToAppear {
             return true

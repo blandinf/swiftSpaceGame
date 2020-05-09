@@ -13,6 +13,10 @@
 		AD0549B32456E48400222331 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0549B22456E48400222331 /* Game.swift */; };
 		AD0549C02457295C00222331 /* WaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0549BF2457295C00222331 /* WaitingViewController.swift */; };
 		AD0549C2245729B800222331 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0549C1245729B800222331 /* LoginViewController.swift */; };
+		AD1E07022467065B006DE8EF /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = AD1E07012467065B006DE8EF /* AlamofireImage */; };
+		AD1E0713246708E3006DE8EF /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1E0712246708E3006DE8EF /* OnBoardingViewController.swift */; };
+		AD1E071624670DA0006DE8EF /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1E071524670DA0006DE8EF /* Slide.swift */; };
+		AD1E071824670DDB006DE8EF /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD1E071724670DDB006DE8EF /* Slide.xib */; };
 		AD4F411B2456C0F9002AE90D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4F411A2456C0F9002AE90D /* Player.swift */; };
 		AD71420E244999D500F98183 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD71420D244999D500F98183 /* AppDelegate.swift */; };
 		AD714210244999D500F98183 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AD71420F244999D500F98183 /* GameScene.sks */; };
@@ -39,6 +43,9 @@
 		AD0549B22456E48400222331 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		AD0549BF2457295C00222331 /* WaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingViewController.swift; sourceTree = "<group>"; };
 		AD0549C1245729B800222331 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		AD1E0712246708E3006DE8EF /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
+		AD1E071524670DA0006DE8EF /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
+		AD1E071724670DDB006DE8EF /* Slide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		AD4F411A2456C0F9002AE90D /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		AD71420A244999D500F98183 /* SpaceGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD71420D244999D500F98183 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +74,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD02702C245EFD9900DDC3A6 /* SocketIO in Frameworks */,
+				AD1E07022467065B006DE8EF /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,8 +112,18 @@
 				AD714215244999D500F98183 /* GameViewController.swift */,
 				AD0549BF2457295C00222331 /* WaitingViewController.swift */,
 				AD0549C1245729B800222331 /* LoginViewController.swift */,
+				AD1E0712246708E3006DE8EF /* OnBoardingViewController.swift */,
 			);
 			path = controllers;
+			sourceTree = "<group>";
+		};
+		AD1E071424670D88006DE8EF /* views */ = {
+			isa = PBXGroup;
+			children = (
+				AD1E071524670DA0006DE8EF /* Slide.swift */,
+				AD1E071724670DDB006DE8EF /* Slide.xib */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 		AD4F410C2456B932002AE90D /* Frameworks */ = {
@@ -175,6 +193,7 @@
 		AD71420C244999D500F98183 /* SpaceGame */ = {
 			isa = PBXGroup;
 			children = (
+				AD1E071424670D88006DE8EF /* views */,
 				AD0270342460A84000DDC3A6 /* scene */,
 				AD027032245F533400DDC3A6 /* protocols */,
 				AD02702D245EFDED00DDC3A6 /* managers */,
@@ -210,6 +229,7 @@
 			name = SpaceGame;
 			packageProductDependencies = (
 				AD02702B245EFD9900DDC3A6 /* SocketIO */,
+				AD1E07012467065B006DE8EF /* AlamofireImage */,
 			);
 			productName = SpaceGame;
 			productReference = AD71420A244999D500F98183 /* SpaceGame.app */;
@@ -241,6 +261,7 @@
 			mainGroup = AD714201244999D500F98183;
 			packageReferences = (
 				AD02702A245EFD9900DDC3A6 /* XCRemoteSwiftPackageReference "socket" */,
+				AD1E07002467065B006DE8EF /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 			);
 			productRefGroup = AD71420B244999D500F98183 /* Products */;
 			projectDirPath = "";
@@ -259,6 +280,7 @@
 				ADB719A12449A13700DABA4D /* enemy-types.json in Resources */,
 				AD714219244999D500F98183 /* Main.storyboard in Resources */,
 				ADB719A22449A13700DABA4D /* waves.json in Resources */,
+				AD1E071824670DDB006DE8EF /* Slide.xib in Resources */,
 				AD714210244999D500F98183 /* GameScene.sks in Resources */,
 				AD71421B244999D800F98183 /* Assets.xcassets in Resources */,
 				AD71421E244999D800F98183 /* LaunchScreen.storyboard in Resources */,
@@ -288,7 +310,9 @@
 				ADF9391C2463EA7C00E1CD01 /* BonusType.swift in Sources */,
 				ADF939222464180500E1CD01 /* Bonus.swift in Sources */,
 				AD0549C2245729B800222331 /* LoginViewController.swift in Sources */,
+				AD1E071624670DA0006DE8EF /* Slide.swift in Sources */,
 				AD027031245F531200DDC3A6 /* GameDelegate.swift in Sources */,
+				AD1E0713246708E3006DE8EF /* OnBoardingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +520,14 @@
 				minimumVersion = 15.2.0;
 			};
 		};
+		AD1E07002467065B006DE8EF /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -503,6 +535,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AD02702A245EFD9900DDC3A6 /* XCRemoteSwiftPackageReference "socket" */;
 			productName = SocketIO;
+		};
+		AD1E07012467065B006DE8EF /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD1E07002467065B006DE8EF /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

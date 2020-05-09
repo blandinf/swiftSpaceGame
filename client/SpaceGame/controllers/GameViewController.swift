@@ -25,7 +25,7 @@ class GameViewController: UIViewController {
                 whoIsTheWinner(scene: scene)
             }
             view.ignoresSiblingOrder = true
-            view.showsPhysics = true
+            view.showsPhysics = false
         }
     }
     
