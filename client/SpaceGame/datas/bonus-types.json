@@ -2,21 +2,33 @@
     {
         "name": "stone",
         "speed": 400,
-        "chanceToAppear": 0.5
+        "chanceToAppear": 0.4,
+        "width": 50,
+        "height": 30,
+        "variety": 2
     },
     {
         "name": "balloon",
         "speed": 500,
-        "chanceToAppear": 0.6
+        "chanceToAppear": 0.5,
+        "width": 40,
+        "height": 60,
+        "variety": 1
     },
     {
         "name": "flashlight",
         "speed": 600,
-        "chanceToAppear": 0.7
+        "chanceToAppear": 0.6,
+        "width": 60,
+        "height": 40,
+        "variety": 1
     },
     {
         "name": "ice",
         "speed": 700,
-        "chanceToAppear": 0.8
+        "chanceToAppear": 0.7,
+        "width": 40,
+        "height": 40,
+        "variety": 1
     }
 ]

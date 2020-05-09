@@ -12,7 +12,6 @@ struct Wave: Codable {
     struct WaveEnemy: Codable {
         let position: Int
         let xOffset: CGFloat
-        let moveStraight: Bool
     }
     struct WaveBonus: Codable {
         let position: Int

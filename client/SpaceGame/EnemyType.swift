@@ -10,7 +10,8 @@ import SpriteKit
 
 struct EnemyType: Codable {
     let name: String
-    let shields: Int
     let speed: CGFloat
-    let powerUpChance: Int
+    let width: Int
+    let height: Int
+    let variety: Int
 }

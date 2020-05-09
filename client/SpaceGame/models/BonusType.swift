@@ -12,4 +12,7 @@ struct BonusType: Codable {
     let name: String
     let speed: CGFloat
     let chanceToAppear: CGFloat
+    let width: Int
+    let height: Int
+    let variety: Int
 }

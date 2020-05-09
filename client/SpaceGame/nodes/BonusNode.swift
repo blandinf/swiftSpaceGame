@@ -13,11 +13,13 @@ class BonusNode: SKSpriteNode {
     
     init(type: BonusType, startPosition: CGPoint, xOffset: CGFloat) {
         self.type = type
-        
-        let texture = SKTexture(imageNamed: type.name)
-        super.init(texture: texture, color: .white, size: texture.size())
-        
-        physicsBody = SKPhysicsBody(rectangleOf: texture.size())
+
+        super.init(texture: SKTexture(), color: .white, size: CGSize())
+                       
+        texture = fillWithRandomTexture()
+        size = CGSize(width: type.width, height: type.height)
+                
+        physicsBody = SKPhysicsBody(rectangleOf: size)
         physicsBody?.categoryBitMask = CollisionType.bonus.rawValue
         physicsBody?.collisionBitMask = CollisionType.bonus.rawValue
         physicsBody?.contactTestBitMask = CollisionType.bonus.rawValue
@@ -29,6 +31,19 @@ class BonusNode: SKSpriteNode {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("NO")
+    }
+    
+    func fillWithRandomTexture () -> SKTexture {
+        let random = Int.random(in: 1...type.variety)
+        var finalType: String = ""
+        
+        if type.name == "stone" {
+            finalType = type.name + "\(random)"
+        } else {
+            finalType = type.name
+        }
+        
+        return SKTexture(imageNamed: finalType)
     }
     
     func configureMovement() {

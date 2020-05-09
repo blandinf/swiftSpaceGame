@@ -4,18 +4,15 @@
 		"enemies": [
 			{
 				"position": 0,
-				"xOffset": 2,
-				"moveStraight": true
+				"xOffset": 2
 			},
 			{
 				"position": 4,
-				"xOffset": 0,
-				"moveStraight": true
+				"xOffset": 0
 			},
 			{
 				"position": 8,
-				"xOffset": 2,
-				"moveStraight": true
+				"xOffset": 2
 			}
 		],
         "bonus": [
@@ -30,33 +27,27 @@
 		"enemies": [
 			{
 				"position": 2,
-				"xOffset": 0,
-				"moveStraight": false
+				"xOffset": 0
 			},
 			{
 				"position": 1,
-				"xOffset": 2,
-				"moveStraight": false
+				"xOffset": 2
 			},
 			{
 				"position": 0,
-				"xOffset": 4,
-				"moveStraight": false
+				"xOffset": 4
 			},
 			{
 				"position": 6,
-				"xOffset": 1,
-				"moveStraight": false
+				"xOffset": 1
 			},
 			{
 				"position": 7,
-				"xOffset": 3,
-				"moveStraight": false
+				"xOffset": 3
 			},
 			{
 				"position": 8,
-				"xOffset": 5,
-				"moveStraight": false
+				"xOffset": 5
 			},
 		],
         "bonus": [
@@ -71,68 +62,55 @@
 		"enemies": [
 			{
 				"position": 4,
-				"xOffset": 0,
-				"moveStraight": true
+				"xOffset": 0
 			},
 			{
 				"position": 3,
-				"xOffset": 1,
-				"moveStraight": true
+				"xOffset": 1
 			},
 			{
 				"position": 2,
-				"xOffset": 2,
-				"moveStraight": true
+				"xOffset": 2
 			},
 			{
 				"position": 1,
-				"xOffset": 3,
-				"moveStraight": true
+				"xOffset": 3
 			},
 			{
 				"position": 5,
-				"xOffset": 1,
-				"moveStraight": true
+				"xOffset": 1
 			},
 			{
 				"position": 6,
-				"xOffset": 2,
-				"moveStraight": true
+				"xOffset": 2
 			},
 			{
 				"position": 7,
-				"xOffset": 3,
-				"moveStraight": true
+				"xOffset": 3
 			},
 			{
 				"position": 2,
-				"xOffset": 8,
-				"moveStraight": false
+				"xOffset": 8
 			},
 			{
 				"position": 1,
-				"xOffset": 8,
-				"moveStraight": false
+				"xOffset": 8
 			},
 			{
 				"position": 0,
-				"xOffset": 8,
-				"moveStraight": false
+				"xOffset": 8
 			},
 			{
 				"position": 6,
-				"xOffset": 9,
-				"moveStraight": false
+				"xOffset": 9
 			},
 			{
 				"position": 7,
-				"xOffset": 9,
-				"moveStraight": false
+				"xOffset": 9
 			},
 			{
 				"position": 8,
-				"xOffset": 9,
-				"moveStraight": false
+				"xOffset": 9
 			},
 		],
         "bonus": [
